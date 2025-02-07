@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+</head>
+<body>
+    <div class="space">
+
+    </div>
+    <div class="main-container">
+        <div class="header">
+            <h1 class="headertxt">SUGAR INTAKE MONITORING SYSTEM</h1>
+        </div>
+        <div class="main">
+            <div class="tracker">
+                <h1 class="progressbarheading">Today's Sugar Consumption Progress Bar</h1>
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span>5g</span>
+                        <span>10g</span>
+                        <span>15g</span>
+                        <span>20g</span>
+                        <span>25g</span>
+                        <span>30g</span>
+                        <span>35g</span>
+                        <span>40g</span>
+                        <span>45g</span>
+                        <span>50g</span>
+                    </div>
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+            <div class="breakfast">
+                <h2>BREAKFAST</h2>
+                <input type="number" id="rice1" class="sugarInput" name="Rice" placeholder="Enter the amount of rice in cups" pattern="\d*" title="Numbers only" required>
+                <label for="riceTypesBreakfast">TYPE OF RICE:</label>
+                <select id="riceTypesBreakfast" class="menu1">
+                    <option value="" disabled selected>Select a type of rice</option>
+                    <option value="Jasmine Rice">Jasmine Rice</option>
+                    <option value="Basmati Rice">Basmati Rice</option>
+                    <option value="White Rice">White Rice</option>
+                    <option value="Brown Rice">Brown Rice</option>
+                    <option value="Sticky Rice">Sticky Rice</option>
+                </select> <br>
+                <label for="sugar1">The Amount of Sugar Calculated:</label>
+                <input id="sugar1" type="text" value="" readonly>
+            </div>
+            <div class="lunch">
+                <h2>LUNCH</h2>
+                <input type="number" id="rice2" class="sugarInput" name="Rice" placeholder="Enter the amount of rice in cups" pattern="\d*" title="Numbers only" required>
+                <label for="riceTypesLunch">TYPE OF RICE:</label>
+                <select id="riceTypesLunch" class="menu2">
+                    <option value="" disabled selected>Select a type of rice</option>
+                    <option value="Jasmine Rice">Jasmine Rice</option>
+                    <option value="Basmati Rice">Basmati Rice</option>
+                    <option value="White Rice">White Rice</option>
+                    <option value="Brown Rice">Brown Rice</option>
+                    <option value="Sticky Rice">Sticky Rice</option>
+                </select>
+                <br>
+                <label for="sugar2">The Amount of Sugar Calculated:</label>
+                <input id="sugar2" type="text" value="" readonly>
+            </div>
+            <div class="dinner">
+                <h2>DINNER</h2>
+                <input type="number" id="rice3" class="sugarInput" name="Rice" placeholder="Enter the amount of rice in cups" pattern="\d*" title="Numbers only" required>
+                <label for="riceTypesDinner">TYPE OF RICE:</label>
+                <select id="riceTypesDinner" class="menu3">
+                    <option value="" disabled selected>Select a type of rice</option>
+                    <option value="Jasmine Rice">Jasmine Rice</option>
+                    <option value="Basmati Rice">Basmati Rice</option>
+                    <option value="White Rice">White Rice</option>
+                    <option value="Brown Rice">Brown Rice</option>
+                    <option value="Sticky Rice">Sticky Rice</option>
+                </select>
+                <br>
+                <label for="sugar3">The Amount of Sugar Calculated:</label>
+                <input id="sugar3" type="text" value="" readonly>
+            </div>
+            <div class="total">
+                <h1 class="total" id="current-time">Current Time: </h1>
+                <input id="totalSugar" type="text" value="" readonly>
+            </div>
+        </div>
+        <div class="footer">
+            
+        </div>
+    </div>
+    <script src="calcsugar.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function updateTime() {
+            const DateTime = luxon.DateTime;
+            let currentTime = DateTime.now().setZone("Asia/Manila");
+            let formattedTime = currentTime.toFormat('hh:mm:ss a');
+
+            document.getElementById("current-time").textContent = "Total Sugar Intake as of " + formattedTime + ":";
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
